@@ -9,22 +9,22 @@ const NavItems = () => {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if(e.key === "Escape") {
+      if (e.key === "Escape") {
         setActiveIndex(null);
       }
-    }
+    };
 
     document.addEventListener("keydown", handler);
     return () => {
       document.removeEventListener("keydown", handler);
-    }
-  }, [])
+    };
+  }, []);
 
   const isAnyOpen = activeIndex !== null;
 
   const navRef = useRef<HTMLDivElement | null>(null);
 
-  useOnClickOutside(navRef, () => setActiveIndex(null)
+  useOnClickOutside(navRef, () => setActiveIndex(null));
 
   return (
     <div className="flex gap-4 h-full" ref={navRef}>
