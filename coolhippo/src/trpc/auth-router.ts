@@ -1,4 +1,3 @@
-import { payload } from "payload";
 import { AuthCredentialsValidator } from "../lib/validators/account-credentials-validator";
 import { publicProcedure, router } from "./trpc";
 import { getPayloadClient } from "../get-payload";
@@ -8,7 +7,7 @@ import { z } from "zod";
 export const authRouter = router({
   createPayloadUser: publicProcedure
     .input(AuthCredentialsValidator)
-    .query(async (input) => {
+    .query(async ({ input }) => {
       const { email, password } = input;
       const payload = await getPayloadClient();
 
